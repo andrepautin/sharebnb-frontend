@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
+import ShareBnbApi from "./api";
 import axios from "axios";
 /** RegisterUserForm
  *
@@ -17,7 +18,7 @@ import axios from "axios";
  * Routes -> SignupForm
  */
 function RegisterUserForm({ signup }) {
-  let initialState = { username: "", password: "", firstName: "", lastName: "", email: "", phone: "", file: null };
+  let initialState = { username: "", password: "", firstName: "", lastName: "", email: "", phone: ""};
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
   const history = useHistory();
@@ -32,14 +33,19 @@ function RegisterUserForm({ signup }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log("EVT--->", evt);
-    console.log("EVT TARGET FILES IMG", evt.target[0].files[0]);
-    // try {
-    //   await signup(formData);
-    //   setFormData(initialState);
-    //   history.push("/");
-    // } catch (err) {
-    //   setFormError(err)
-    // };
+    console.log("EVT TARGET FILES IMG", evt.target[6].files[0]);
+    let file = evt.target[6].files[0]
+    console.log(file)
+    //setFormData([...formData, evt.target[0].files[0]])
+    console.log(`handleSubmit formData-->`, formData)
+  
+    try {
+      await ShareBnbApi.register(formData);
+      // setFormData(initialState);
+      // history.push("/");
+    } catch (err) {
+      setFormError(err)
+    };
   }
 
   return (
@@ -49,15 +55,15 @@ function RegisterUserForm({ signup }) {
         <Card.Body>
           {formError && <Alert variant="danger">{formError}</Alert>}
           <Form onSubmit={handleSubmit}>
-            {/* <Form.Group controlId="registerUserFormUsername">
+            <Form.Group controlId="registerUserFormUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control type="text"
                 placeholder="Username"
                 name="username"
                 value={formData.username}
                 onChange={handleChange} />
-            </Form.Group> */}
-            {/* <Form.Group controlId="registerUserFormPassword">
+            </Form.Group>
+            <Form.Group controlId="registerUserFormPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password"
                 placeholder="Password"
@@ -96,9 +102,9 @@ function RegisterUserForm({ signup }) {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange} />
-            </Form.Group> */}
+            </Form.Group>
             <Form.Group controlId="registerUserFormImage">
-              <Form.Label>image</Form.Label>
+              <Form.Label>Profile Image</Form.Label>
               <Form.Control type="file"
                 placeholder="Upload"
                 name="image"
