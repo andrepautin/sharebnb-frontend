@@ -17,7 +17,7 @@ import ShareBnbApi from "./api";
  *
  * Routes -> SignupForm
  */
-function RegisterUserForm({ signup }) {
+function UserRegisterForm({ signup }) {
   let initialState = { username: "testuser", password: "password", firstName: "Test", lastName: "User", email: "test@test.test", phone: "000000000"};
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
@@ -35,7 +35,8 @@ function RegisterUserForm({ signup }) {
     evt.preventDefault();
     let file = evt.target[6].files[0];
     try {
-      await ShareBnbApi.register(formData, file);
+      let token = await ShareBnbApi.register(formData, file);
+      ShareBnbApi.token = token;
       // setFormData(initialState);
       // history.push("/");
     } catch (err) {
@@ -117,5 +118,5 @@ function RegisterUserForm({ signup }) {
     </div>
   );
 }
-export default RegisterUserForm;
+export default UserRegisterForm;
 

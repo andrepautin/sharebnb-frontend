@@ -47,6 +47,12 @@ class ShareBnbApi {
     console.log("USER RES--->", res);
     // console.log("IMG RES--->", resImg);
   }
+
+  static async login(data) {
+    let res = await this.request(`users/token`, data, 'post');
+    console.log("TOKEN FROM SERVER--->", res.token);
+    return res.token;
+  }
 }
 
 export default ShareBnbApi;
