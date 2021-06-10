@@ -45,13 +45,19 @@ class ShareBnbApi {
     let res = await this.request(`users/register`, formData, 'post', { "Content-Type": "multipart/form-data"});
     // let resImg = await this.request(`users/image`, formData, 'post', , )
     console.log("USER RES--->", res);
-    // console.log("IMG RES--->", resImg);
+    return res.token;
   }
 
   static async login(data) {
     let res = await this.request(`users/token`, data, 'post');
     console.log("TOKEN FROM SERVER--->", res.token);
     return res.token;
+  }
+
+  static async getUser(username) {
+   let res = await this.request(`users/${username}`)
+   console.log(`frontEnd getUser response`, res)
+   return res;
   }
 }
 

@@ -14,7 +14,7 @@ import ShareBnbApi from "./api";
  *
  * Routes -> SignupForm
  */
-function UserLoginForm() {
+function UserLoginForm({login}) {
   let initialState = { username: "testuser", password: "password" }
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
@@ -31,8 +31,7 @@ function UserLoginForm() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      let token = await ShareBnbApi.login(formData);
-      ShareBnbApi.token = token;
+      await login(formData)
       // setFormData(initialState);
       // history.push("/");
     } catch (err) {

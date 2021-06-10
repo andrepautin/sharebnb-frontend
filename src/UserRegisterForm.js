@@ -35,10 +35,9 @@ function UserRegisterForm({ signup }) {
     evt.preventDefault();
     let file = evt.target[6].files[0];
     try {
-      let token = await ShareBnbApi.register(formData, file);
-      ShareBnbApi.token = token;
+      await signup(formData);
       // setFormData(initialState);
-      // history.push("/");
+      history.push("/");
     } catch (err) {
       console.log("ERR--->", err);
       setFormError(err.message);
