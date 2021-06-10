@@ -71,11 +71,9 @@ function App() {
    * localStorage and updates hasLocalToken */
 
   async function login(formData) {
-
     let tokenRes = await ShareBnbApi.login(formData);
     setHasLocalToken(true);
     localStorage.setItem("item", tokenRes);
-
   }
 
   /** Gets auth token from backend on login, sets it on 
@@ -112,13 +110,13 @@ function App() {
   // }
 
   /** Clears local storage and logs user out */
-  // async function logout() {
+  async function handleLogout() {
 
-  //   localStorage.clear();
-  //   setCurrentUser(null);
-  //   setHasLocalToken(false);
+    localStorage.clear();
+    setCurrentUser(null);
+    setHasLocalToken(false);
 
-  // }
+  }
 
   // console.log("App pre-return localStorage token + isLoadingUser",
   //   localStorage.getItem("item"),
@@ -133,7 +131,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation currentUser={currentUser} />
+        <Navigation currentUser={currentUser} handleLogout={handleLogout}/>
         {currentUser !== null
           ? <PrivateRoutes currentUser={currentUser} />
           : <Routes login={login} signup={signup} currentUser={currentUser} />}

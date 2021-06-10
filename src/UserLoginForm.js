@@ -32,9 +32,9 @@ function UserLoginForm({login}) {
     evt.preventDefault();
     try {
       await login(formData)
-      // setFormData(initialState);
-      // history.push("/");
+      history.push("/");
     } catch (err) {
+      setFormData(initialState);
       console.log("ERR--->", err);
       setFormError(err.message);
     };

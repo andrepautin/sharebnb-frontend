@@ -36,7 +36,7 @@ function UserRegisterForm({ signup }) {
     let file = evt.target[6].files[0];
     try {
       await signup(formData);
-      // setFormData(initialState);
+      setFormData(initialState);
       history.push("/");
     } catch (err) {
       console.log("ERR--->", err);

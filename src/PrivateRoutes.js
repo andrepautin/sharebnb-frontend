@@ -1,5 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
+import ListingsCardList from "./ListingsCardList";
+import ListingDetail from "./ListingDetail"
 
 
 /** Private Routes
@@ -22,7 +24,7 @@ import Homepage from "./Homepage";
  *  }
  */
 
-function PrivateRoutes({ logout, currentUser }) {
+function PrivateRoutes({ currentUser }) {
 
   console.log("PrivateRoutes currentUser", currentUser);
 
@@ -34,11 +36,11 @@ function PrivateRoutes({ logout, currentUser }) {
       </Route>
 
       <Route exact path="/listings">
-        <>ListingsList</>
+        <ListingsCardList/>
       </Route>
 
-      <Route exact path="/listings/id">
-        <>LISTINGS DETAILS</>
+      <Route exact path="/listings/:id">
+        <ListingDetail/>
       </Route>
 
       <Route exact path="/profile">
@@ -47,10 +49,6 @@ function PrivateRoutes({ logout, currentUser }) {
 
       <Route exact path="/messaging">
         <>Messaging</>
-      </Route>
-
-      <Route exact path="/logout">
-        <>logout</>
       </Route>
 
       <Redirect to="/" />

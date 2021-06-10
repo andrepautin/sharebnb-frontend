@@ -14,9 +14,14 @@ import Nav from 'react-bootstrap/Nav';
  * App -> Navigation
  */
 
-function Navigation({ currentUser }) {
+function Navigation({ currentUser, handleLogout }) {
 
   console.log("Navigation currentUser", currentUser)
+
+  function logout(evt) {
+    evt.preventDefault();
+    handleLogout();
+  }
 
   //returns navigation links depending on whether the currentUser state is populated
   function getNavLinks(currentUser) {
@@ -60,7 +65,7 @@ function Navigation({ currentUser }) {
           </Nav.Item>
 
           <Nav.Item as="li">
-            <NavLink className="nav-link" exact to="/logout">
+            <NavLink className="nav-link" onClick={logout} to="/">
               Log Out ({currentUser.username})
               </NavLink>
           </Nav.Item></>

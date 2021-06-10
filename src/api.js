@@ -59,6 +59,16 @@ class ShareBnbApi {
    console.log(`frontEnd getUser response`, res)
    return res;
   }
+
+  static async getListings() {
+    let res = await this.request(`listings`);
+    return res.listings;
+  }
+
+  static async getListing(id) {
+    let res = await this.request(`listings/${id}`);
+    return res.listing;
+  }
 }
 
 export default ShareBnbApi;

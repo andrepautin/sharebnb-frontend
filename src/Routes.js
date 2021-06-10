@@ -1,5 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
+import ListingsCardList from "./ListingsCardList";
+import ListingDetail from "./ListingDetail";
 import UserLoginForm from "./UserLoginForm";
 import UserRegisterForm from "./UserRegisterForm";
 
@@ -32,11 +34,11 @@ function Routes({ login, signup, currentUser }) {
       </Route>
 
       <Route exact path="/listings">
-        <>LISTINGS</>
+        <ListingsCardList/>
       </Route>
 
       <Route path="/listings/:id">
-        <>LISTINGS DETAILS</>
+        <ListingDetail/>
       </Route>
 
       <Route exact path="/login">
