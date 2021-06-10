@@ -12,11 +12,11 @@ class ShareBnbApi {
   // the token for interactive with the API will be stored here.
   static token;
 
-  static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
+  static async request(endpoint, data = {}, method = "get", headers = {}) {
+    console.debug("API Call:", endpoint, data, method, headers);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${this.token}` };
+    // const headers = { Authorization: `Bearer ${this.token}` };
     const params = (method === "get")
       ? data
       : {};
@@ -32,16 +32,20 @@ class ShareBnbApi {
 
   // Individual API routes
 
-  static async register(data) {
-    // console.log(`api register data, file-->`, data, file)
-    // const formData = new FormData();
-    // formData.append("data", data);
+  static async register(data, file) {
+    console.log("INPUT DATA--->", data);
+    // console.log(`api register data, file-->`, file);
     // console.log(`formdata after data append --> `, formData)
-    // formData.append("file", file);
-    // console.log(`uploading file ===>`, formData);
-    let res = await this.request(`users/register`, data, 'post', { 
-    headers: { "Content-Type": "multipart/formdata"}})
-    console.log(res);
+    let formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
+    formData.append("file", file);
+    console.log("FORMDATA IN REGISTER--->", formData);
+    let res = await this.request(`users/register`, formData, 'post');
+    // let resImg = await this.request(`users/image`, formData, 'post', { "Content-Type": "multipart/form-data"})
+    console.log("USER RES--->", res);
+    // console.log("IMG RES--->", resImg);
   }
 }
 

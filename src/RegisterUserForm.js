@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
 import ShareBnbApi from "./api";
-import axios from "axios";
+
 /** RegisterUserForm
  *
  * Props:
@@ -18,10 +18,11 @@ import axios from "axios";
  * Routes -> SignupForm
  */
 function RegisterUserForm({ signup }) {
-  let initialState = { username: "", password: "", firstName: "", lastName: "", email: "", phone: ""};
+  let initialState = { username: "testuser", password: "password", firstName: "Test", lastName: "User", email: "test@test.test", phone: "000000000"};
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
   const history = useHistory();
+
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(fData => ({
@@ -32,19 +33,14 @@ function RegisterUserForm({ signup }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log("EVT--->", evt);
-    console.log("EVT TARGET FILES IMG", evt.target[6].files[0]);
-    let file = evt.target[6].files[0]
-    console.log(file)
-    //setFormData([...formData, evt.target[0].files[0]])
-    console.log(`handleSubmit formData-->`, formData)
-  
+    let file = evt.target[6].files[0];
     try {
-      await ShareBnbApi.register(formData);
+      await ShareBnbApi.register(formData, file);
       // setFormData(initialState);
       // history.push("/");
     } catch (err) {
-      setFormError(err)
+      console.log("ERR--->", err);
+      setFormError(err.message);
     };
   }
 
@@ -123,4 +119,3 @@ function RegisterUserForm({ signup }) {
 }
 export default RegisterUserForm;
 
-// `Selected file - ${this.fileInput.current.files[0].name}`
