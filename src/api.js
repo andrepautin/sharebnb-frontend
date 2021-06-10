@@ -42,8 +42,8 @@ class ShareBnbApi {
     }
     formData.append("file", file);
     console.log("FORMDATA IN REGISTER--->", formData);
-    let res = await this.request(`users/register`, formData, 'post');
-    // let resImg = await this.request(`users/image`, formData, 'post', { "Content-Type": "multipart/form-data"})
+    let res = await this.request(`users/register`, formData, 'post', { "Content-Type": "multipart/form-data"});
+    // let resImg = await this.request(`users/image`, formData, 'post', , )
     console.log("USER RES--->", res);
     // console.log("IMG RES--->", resImg);
   }
