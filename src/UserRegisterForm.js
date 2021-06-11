@@ -33,9 +33,10 @@ function UserRegisterForm({ signup }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(`event target in handleSubmit`, evt.target)
     let file = evt.target[6].files[0];
     try {
-      await signup(formData);
+      await signup(formData, file);
       setFormData(initialState);
       history.push("/");
     } catch (err) {

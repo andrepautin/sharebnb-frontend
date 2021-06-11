@@ -34,7 +34,7 @@ class ShareBnbApi {
 
   static async register(data, file) {
     console.log("INPUT DATA--->", data);
-    // console.log(`api register data, file-->`, file);
+    console.log(`api register data, file-->`, file);
     // console.log(`formdata after data append --> `, formData)
     let formData = new FormData();
     for (let key in data) {

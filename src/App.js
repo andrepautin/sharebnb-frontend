@@ -79,9 +79,9 @@ function App() {
   /** Gets auth token from backend on login, sets it on 
    * localStorage & updates hasLocalToken */
 
-  async function signup(formData) {
+  async function signup(formData, file) {
 
-    let tokenRes = await ShareBnbApi.register(formData);
+    let tokenRes = await ShareBnbApi.register(formData, file);
     console.log(`APP signup tokenRes -->`, tokenRes)
     localStorage.setItem("item", tokenRes);
     ShareBnbApi.token = (tokenRes);
