@@ -1,10 +1,14 @@
 import Card from "react-bootstrap/Card";
 import {Link} from "react-router-dom";
 
-/** ListingCard component
+/** ListingCard component: Renders a card for each
+ * listing
  * 
  * Props:
  * - listing {id, host_username, title, description, price}
+ * 
+ * State:
+ *  - None
  */
 
 function ListingCard({listing}) {

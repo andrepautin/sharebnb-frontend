@@ -9,8 +9,6 @@ import PostNewListingForm from "./PostNewListingForm";
  * 
  * Props: 
  *  - currentUser {username, firstName, lastName, email,...}
- *  - logout()
- *  - editProfile()
  * 
  * State:
  *  - none

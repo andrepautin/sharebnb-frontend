@@ -69,7 +69,6 @@ function App() {
 
   /** Gets auth token from backend on login, sets it on
    * localStorage and updates hasLocalToken */
-
   async function login(formData) {
     let tokenRes = await ShareBnbApi.login(formData);
     setHasLocalToken(true);
@@ -78,7 +77,6 @@ function App() {
 
   /** Gets auth token from backend on login, sets it on 
    * localStorage & updates hasLocalToken */
-
   async function signup(formData, file) {
 
     let tokenRes = await ShareBnbApi.register(formData, file);
@@ -90,24 +88,7 @@ function App() {
 
   }
 
-  /** calls API func to update/edit user profile data, 
-   * sets current user to updated user object */
-
-  // async function editProfile(formData) {
-
-  //   const { username, password, firstName, lastName, email } = formData;
-  //   await ShareBnbApi.authenticate({ username, password });
-
-  //   let userRes = await ShareBnbApi.editUser({
-  //     username,
-  //     firstName,
-  //     lastName,
-  //     email
-  //   });
-
-  //   setCurrentUser(userRes);
-
-  // }
+  //TODO - function for editing user profile
 
   /** Clears local storage and logs user out */
   async function handleLogout() {
@@ -117,16 +98,6 @@ function App() {
     setHasLocalToken(false);
 
   }
-
-  // console.log("App pre-return localStorage token + isLoadingUser",
-  //   localStorage.getItem("item"),
-  //   isLoadingUser);
-
-  // if (localStorage.getItem("item") && isLoadingUser) {
-  //   return (
-  //     <div className="App"><h1>loading...</h1></div>
-  //   );
-  // }
 
   return (
     <div className="App">

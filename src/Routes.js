@@ -17,8 +17,10 @@ import UserRegisterForm from "./UserRegisterForm";
  * 
  * App -> Routes -> {
  *    Homepage, 
- *    LoginForm,
- *    SignupForm,
+ *    UserLoginForm,
+ *    UserRegisterForm,
+ *    ListingCardList,
+ *    ListingDetail
  *  }
  */
 

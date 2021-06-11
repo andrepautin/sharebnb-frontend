@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 //import "./Navigation.css";
 
-/** Navigation
+/** Navigation: Renders navbar with different navlinks
+ * if user logged in/not logged in
  * 
  * Props: 
  *  - currentUser {username, firstName, lastName, email,... }

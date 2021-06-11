@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
-import ShareBnbApi from "./api";
 
 /** RegisterUserForm
  *
@@ -18,7 +17,7 @@ import ShareBnbApi from "./api";
  * Routes -> SignupForm
  */
 function UserRegisterForm({ signup }) {
-  let initialState = { username: "testuser", password: "password", firstName: "Test", lastName: "User", email: "test@test.test", phone: "000000000"};
+  let initialState = { username: "", password: "", firstName: "", lastName: "", email:"", phone: ""};
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
   const history = useHistory();

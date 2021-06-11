@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import ShareBnbApi from "./api";
 import ListingCard from "./ListingCard";
 
-/** ListingsCardList component
+/** ListingsCardList component: Renders listing cards
+ * 
+ * Props:
+ *  - None
  * 
  * State:
  * - listings

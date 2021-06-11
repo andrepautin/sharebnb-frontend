@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
-import ShareBnbApi from "./api";
 
 /** PostNewListingForm component
  *
@@ -17,6 +16,8 @@ import ShareBnbApi from "./api";
  *
  * Routes -> SignupForm
  */
+
+//TODO - handle photo uploads 
 function PostNewListingForm({ currentUser }) {
   let initialState = { title: "new list title", description: "new list desc", price: "$1"};
   const [formData, setFormData] = useState(initialState);

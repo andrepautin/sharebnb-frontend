@@ -9,13 +9,15 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  */
 
 class ShareBnbApi {
-  // the token for interactive with the API will be stored here.
+  // the token for interacting with the API will be stored here.
   static token;
 
+  /** Generic request function */
   static async request(endpoint, data = {}, method = "get", headers = {}) {
     console.debug("API Call:", endpoint, data, method, headers);
 
     const url = `${BASE_URL}/${endpoint}`;
+    //TODO - use token/auth for routes that require auth
     // const headers = { Authorization: `Bearer ${this.token}` };
     const params = (method === "get")
       ? data
@@ -32,6 +34,7 @@ class ShareBnbApi {
 
   // Individual API routes
 
+  /** Sends user data & file to register user */
   static async register(data, file) {
     console.log("INPUT DATA--->", data);
     console.log(`api register data, file-->`, file);
@@ -48,23 +51,28 @@ class ShareBnbApi {
     return res.token;
   }
 
+  /** Sends username/password data to log user in */
   static async login(data) {
     let res = await this.request(`users/token`, data, 'post');
     console.log("TOKEN FROM SERVER--->", res.token);
     return res.token;
   }
 
+  /** Gets user by username */
   static async getUser(username) {
    let res = await this.request(`users/${username}`)
    console.log(`frontEnd getUser response`, res)
    return res;
   }
 
+  /** Gets all listings */
+  //TODO utilize search function
   static async getListings() {
     let res = await this.request(`listings`);
     return res.listings;
   }
 
+  /** Gets single listing by ID */
   static async getListing(id) {
     let res = await this.request(`listings/${id}`);
     return res.listing;

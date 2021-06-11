@@ -4,10 +4,12 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
-import ShareBnbApi from "./api";
 
-/** RegisterUserForm
+/** UserLoginForm
  *
+ * Props:
+ *  - login()
+ * 
  * State:
  *  - formData
  *  - formError

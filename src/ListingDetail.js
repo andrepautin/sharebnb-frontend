@@ -2,7 +2,14 @@ import { useParams } from "react-router";
 import {useState, useEffect} from "react";
 import ShareBnbApi from "./api";
 
-/** ListingDetail component
+/** ListingDetail component: Renders detail page for specific
+ * listing
+ * 
+ * Props: 
+ *  - None
+ * 
+ * State: 
+ *  - None
  * 
  * Routes -> ListingDetail
  */
