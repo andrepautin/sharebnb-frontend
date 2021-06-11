@@ -47,7 +47,7 @@ function Navigation({ currentUser, handleLogout }) {
       return (
         <>
           <Nav.Item as="li">
-            <NavLink className="nav-link" exact to="/postlisting">
+            <NavLink className="nav-link" exact to="/listings/new">
               Post a Listing
               </NavLink>
           </Nav.Item>

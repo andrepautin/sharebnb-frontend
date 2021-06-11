@@ -1,7 +1,8 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
 import ListingsCardList from "./ListingsCardList";
-import ListingDetail from "./ListingDetail"
+import ListingDetail from "./ListingDetail";
+import PostNewListingForm from "./PostNewListingForm";
 
 
 /** Private Routes
@@ -16,9 +17,9 @@ import ListingDetail from "./ListingDetail"
  * 
  * App -> PrivateRoutes -> {
  *    Homepage, 
- *    CompanyDetails, 
- *    CompanyList,
- *    JobList,
+ *    ListingsCardList, 
+ *    ListingDetail,
+ *    PostNewListingForm,
  *    Logout 
  *    ProfileForm 
  *  }
@@ -37,6 +38,10 @@ function PrivateRoutes({ currentUser }) {
 
       <Route exact path="/listings">
         <ListingsCardList/>
+      </Route>
+
+      <Route exact path="/listings/new">
+        <PostNewListingForm currentUser={currentUser}/>
       </Route>
 
       <Route exact path="/listings/:id">
